@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GammeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="GammeModelStoreContainer">
+    <EntitySet Name="Account" EntityType="GammeModel.Store.Account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Famille" EntityType="GammeModel.Store.Famille" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fonction" EntityType="GammeModel.Store.Fonction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fonction_Poste" EntityType="GammeModel.Store.Fonction_Poste" store:Type="Tables" store:Schema="dbo" store:Name="Fonction_Poste">
+      <DefiningQuery>SELECT 
+      [Fonction_Poste].[ID_Poste] AS [ID_Poste], 
+      [Fonction_Poste].[ID_Fonction] AS [ID_Fonction], 
+      [Fonction_Poste].[Droit] AS [Droit]
+      FROM [dbo].[Fonction_Poste] AS [Fonction_Poste]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Gamme" EntityType="GammeModel.Store.Gamme" store:Type="Tables" store:Schema="dbo" store:Name="Gamme">
+      <DefiningQuery>SELECT 
+      [Gamme].[ID_Gamme] AS [ID_Gamme], 
+      [Gamme].[ID_Post] AS [ID_Post], 
+      [Gamme].[Position] AS [Position], 
+      [Gamme].[Nbr_Passage] AS [Nbr_Passage], 
+      [Gamme].[Last_Posts] AS [Last_Posts], 
+      [Gamme].[Next_Posts] AS [Next_Posts]
+      FROM [dbo].[Gamme] AS [Gamme]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Historique" EntityType="GammeModel.Store.Historique" store:Type="Tables" store:Schema="dbo" store:Name="Historique">
+      <DefiningQuery>SELECT 
+      [Historique].[Num_Serie] AS [Num_Serie], 
+      [Historique].[ID_Post] AS [ID_Post], 
+      [Historique].[ID_Gamme] AS [ID_Gamme]
+      FROM [dbo].[Historique] AS [Historique]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Ns_AFaire" EntityType="GammeModel.Store.Ns_AFaire" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Num_Serie" EntityType="GammeModel.Store.Num_Serie" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phase" EntityType="GammeModel.Store.Phase" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Poste" EntityType="GammeModel.Store.Poste" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Produit" EntityType="GammeModel.Store.Produit" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profile_Ga" EntityType="GammeModel.Store.Profile_Ga" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sous_Famille" EntityType="GammeModel.Store.Sous_Famille" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="GammeModel.Store.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="GammeModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Famille_Profile_Ga" Association="GammeModel.Store.FK_Famille_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Famille" EntitySet="Famille" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fonction_Phase" Association="GammeModel.Store.FK_Fonction_Phase">
+      <End Role="Phase" EntitySet="Phase" />
+      <End Role="Fonction" EntitySet="Fonction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fonction_Poste_Fonction" Association="GammeModel.Store.FK_Fonction_Poste_Fonction">
+      <End Role="Fonction" EntitySet="Fonction" />
+      <End Role="Fonction_Poste" EntitySet="Fonction_Poste" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fonction_Poste_Poste" Association="GammeModel.Store.FK_Fonction_Poste_Poste">
+      <End Role="Poste" EntitySet="Poste" />
+      <End Role="Fonction_Poste" EntitySet="Fonction_Poste" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historique_Num_Serie" Association="GammeModel.Store.FK_Historique_Num_Serie">
+      <End Role="Num_Serie" EntitySet="Num_Serie" />
+      <End Role="Historique" EntitySet="Historique" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historique_Poste" Association="GammeModel.Store.FK_Historique_Poste">
+      <End Role="Poste" EntitySet="Poste" />
+      <End Role="Historique" EntitySet="Historique" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ns_AFaire_Produit" Association="GammeModel.Store.FK_Ns_AFaire_Produit">
+      <End Role="Produit" EntitySet="Produit" />
+      <End Role="Ns_AFaire" EntitySet="Ns_AFaire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ns_AFaire_Profile_Ga" Association="GammeModel.Store.FK_Ns_AFaire_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Ns_AFaire" EntitySet="Ns_AFaire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produit_Profile_Ga" Association="GammeModel.Store.FK_Produit_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Produit" EntitySet="Produit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produit_Sous_Famille" Association="GammeModel.Store.FK_Produit_Sous_Famille">
+      <End Role="Sous_Famille" EntitySet="Sous_Famille" />
+      <End Role="Produit" EntitySet="Produit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sous_Famille_Famille" Association="GammeModel.Store.FK_Sous_Famille_Famille">
+      <End Role="Famille" EntitySet="Famille" />
+      <End Role="Sous_Famille" EntitySet="Sous_Famille" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sous_Famille_Profile_Ga" Association="GammeModel.Store.FK_Sous_Famille_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Sous_Famille" EntitySet="Sous_Famille" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Account" Association="GammeModel.Store.FK_Users_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Gamme_Poste" Association="GammeModel.Store.Gamme_Poste">
+      <End Role="Poste" EntitySet="Poste" />
+      <End Role="Gamme" EntitySet="Gamme" />
+    </AssociationSet>
+    <AssociationSet Name="Gamme_Profile_Ga" Association="GammeModel.Store.Gamme_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Gamme" EntitySet="Gamme" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Type_User" />
+    </Key>
+    <Property Name="Type_User" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Famille">
+    <Key>
+      <PropertyRef Name="ID_Famille" />
+    </Key>
+    <Property Name="ID_Famille" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nom_Famille" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Gamme" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Fonction">
+    <Key>
+      <PropertyRef Name="ID_Fonction" />
+    </Key>
+    <Property Name="ID_Fonction" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Phase" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nom_Fonction" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'D46A8AD4794FC09E17325CB4AF69B5A2_UR\MES DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\MVCAPPLICATION2\MVCAPPLICATION2\APP_DATA\GAMME.MDF.dbo.Fonction_Poste' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Fonction_Poste">
+    <Key>
+      <PropertyRef Name="ID_Poste" />
+      <PropertyRef Name="ID_Fonction" />
+      <PropertyRef Name="Droit" />
+    </Key>
+    <Property Name="ID_Poste" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Fonction" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Droit" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'D46A8AD4794FC09E17325CB4AF69B5A2_UR\MES DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\MVCAPPLICATION2\MVCAPPLICATION2\APP_DATA\GAMME.MDF.dbo.Gamme' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Gamme">
+    <Key>
+      <PropertyRef Name="ID_Gamme" />
+      <PropertyRef Name="ID_Post" />
+      <PropertyRef Name="Position" />
+      <PropertyRef Name="Nbr_Passage" />
+      <PropertyRef Name="Last_Posts" />
+      <PropertyRef Name="Next_Posts" />
+    </Key>
+    <Property Name="ID_Gamme" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Post" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Nbr_Passage" Type="int" Nullable="false" />
+    <Property Name="Last_Posts" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Next_Posts" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'D46A8AD4794FC09E17325CB4AF69B5A2_UR\MES DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\MVCAPPLICATION2\MVCAPPLICATION2\APP_DATA\GAMME.MDF.dbo.Historique' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Historique">
+    <Key>
+      <PropertyRef Name="Num_Serie" />
+      <PropertyRef Name="ID_Post" />
+    </Key>
+    <Property Name="Num_Serie" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Post" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Gamme" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ns_AFaire">
+    <Key>
+      <PropertyRef Name="Num_Serie" />
+    </Key>
+    <Property Name="Num_Serie" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Code_Produit" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Gamme" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Num_Serie">
+    <Key>
+      <PropertyRef Name="Num_Serie" />
+    </Key>
+    <Property Name="Num_Serie" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Code_Produit" Type="varchar" MaxLength="50" />
+    <Property Name="Sous_Famille" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Post" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Mvt" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Gamme" Type="varchar" MaxLength="50" />
+    <Property Name="Current_Game" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Phase">
+    <Key>
+      <PropertyRef Name="ID_Phase" />
+    </Key>
+    <Property Name="ID_Phase" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nom_Phase" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Poste">
+    <Key>
+      <PropertyRef Name="ID_Post" />
+    </Key>
+    <Property Name="ID_Post" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="nom_Post" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Application" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="In_Po" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Out_Po" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Etat" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Produit">
+    <Key>
+      <PropertyRef Name="Code_Produit" />
+    </Key>
+    <Property Name="Code_Produit" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nom_Produit" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_SFamille" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Gamme" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Profile_Ga">
+    <Key>
+      <PropertyRef Name="ID_Gamme" />
+    </Key>
+    <Property Name="ID_Gamme" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="In_Ga" Type="varchar" MaxLength="50" />
+    <Property Name="Out_Ga" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Next_Gamme" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Etat" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sous_Famille">
+    <Key>
+      <PropertyRef Name="ID_SFamaille" />
+    </Key>
+    <Property Name="ID_SFamaille" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nom_SFamille" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Famille" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ID_Gamme" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Nullable="false" MaxLength="128" Type="nvarchar" />
+    <Property Name="principal_id" Nullable="false" Type="int" />
+    <Property Name="diagram_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Matricule" />
+    </Key>
+    <Property Name="Matricule" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nom_User" Type="varchar" MaxLength="50" />
+    <Property Name="PassWord" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Type_User" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Famille_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Store.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Famille" Type="GammeModel.Store.Famille" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Famille">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fonction_Phase">
+    <End Role="Phase" Type="GammeModel.Store.Phase" Multiplicity="1" />
+    <End Role="Fonction" Type="GammeModel.Store.Fonction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phase">
+        <PropertyRef Name="ID_Phase" />
+      </Principal>
+      <Dependent Role="Fonction">
+        <PropertyRef Name="ID_Phase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fonction_Poste_Fonction">
+    <End Role="Fonction" Type="GammeModel.Store.Fonction" Multiplicity="1" />
+    <End Role="Fonction_Poste" Type="GammeModel.Store.Fonction_Poste" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonction">
+        <PropertyRef Name="ID_Fonction" />
+      </Principal>
+      <Dependent Role="Fonction_Poste">
+        <PropertyRef Name="ID_Fonction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fonction_Poste_Poste">
+    <End Role="Poste" Type="GammeModel.Store.Poste" Multiplicity="1" />
+    <End Role="Fonction_Poste" Type="GammeModel.Store.Fonction_Poste" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poste">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Fonction_Poste">
+        <PropertyRef Name="ID_Poste" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historique_Num_Serie">
+    <End Role="Num_Serie" Type="GammeModel.Store.Num_Serie" Multiplicity="1" />
+    <End Role="Historique" Type="GammeModel.Store.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Num_Serie">
+        <PropertyRef Name="Num_Serie" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="Num_Serie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historique_Poste">
+    <End Role="Poste" Type="GammeModel.Store.Poste" Multiplicity="1" />
+    <End Role="Historique" Type="GammeModel.Store.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poste">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="ID_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ns_AFaire_Produit">
+    <End Role="Produit" Type="GammeModel.Store.Produit" Multiplicity="1" />
+    <End Role="Ns_AFaire" Type="GammeModel.Store.Ns_AFaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produit">
+        <PropertyRef Name="Code_Produit" />
+      </Principal>
+      <Dependent Role="Ns_AFaire">
+        <PropertyRef Name="Code_Produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ns_AFaire_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Store.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Ns_AFaire" Type="GammeModel.Store.Ns_AFaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Ns_AFaire">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produit_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Store.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Produit" Type="GammeModel.Store.Produit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Produit">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produit_Sous_Famille">
+    <End Role="Sous_Famille" Type="GammeModel.Store.Sous_Famille" Multiplicity="1" />
+    <End Role="Produit" Type="GammeModel.Store.Produit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sous_Famille">
+        <PropertyRef Name="ID_SFamaille" />
+      </Principal>
+      <Dependent Role="Produit">
+        <PropertyRef Name="ID_SFamille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sous_Famille_Famille">
+    <End Role="Famille" Type="GammeModel.Store.Famille" Multiplicity="1" />
+    <End Role="Sous_Famille" Type="GammeModel.Store.Sous_Famille" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Famille">
+        <PropertyRef Name="ID_Famille" />
+      </Principal>
+      <Dependent Role="Sous_Famille">
+        <PropertyRef Name="ID_Famille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sous_Famille_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Store.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Sous_Famille" Type="GammeModel.Store.Sous_Famille" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Sous_Famille">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Account">
+    <End Role="Account" Type="GammeModel.Store.Account" Multiplicity="1" />
+    <End Role="Users" Type="GammeModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Type_User" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Type_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gamme_Poste">
+    <End Role="Poste" Type="GammeModel.Store.Poste" Multiplicity="1" />
+    <End Role="Gamme" Type="GammeModel.Store.Gamme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poste">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Gamme">
+        <PropertyRef Name="ID_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gamme_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Store.Profile_Ga" Multiplicity="1" />
+    <End Role="Gamme" Type="GammeModel.Store.Gamme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Gamme">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

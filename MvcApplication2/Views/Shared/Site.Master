@@ -1,0 +1,58 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="Helpers" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../Scripts/jquery-1.2.6.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/Site.js"></script>
+    <%= Html.Action("LogedInUser","Account") %> 
+    <%--<% var User = ViewData["UserDetails"] as MvcApplication2.ViewModels.UserViewModel; %>
+ <%: User.Nom_User  %>!--%>
+</head>
+<body>
+
+    <div id="container">
+        <div id="header">
+            <div id="title">
+                <h1>Gestion de Flux</h1>
+            </div>
+            <div id="loginmenucontainer">
+                <%-- renders a login link or the username and a logout link --%>
+                <%= Html.LoginLink() %>
+            </div>
+            <div id="menucontainer">
+                <ul id="menu">
+                    <%= Html.MenuItem("Accueil", "Index", "Home") %>
+                    <%= Html.MenuItem("Gestion des Postes", "Index", "Poste")%>
+                    <%= Html.MenuItem("Gestion de Flux", "Index", "ProfileGa")%>
+                    <%= Html.MenuItem("Gestion des Utilisateurs", "Index", "User")%>
+                     <%= Html.MenuItem("A propos", "About", "Home")%>
+                      
+                </ul>
+            </div>
+        </div>
+        <%-- this is used for the "ajaxified" login --%>
+        <div id="ajaxlogin">
+        </div>
+        <div id="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="footer">
+            SAGEMCOM &copy; Copyright 2013
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            styleLinks();
+            initLogin('<%= Url.Action("LogonPartial", "Account") %>','<%= Url.Action("Logon", "Account") %>');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GammeModelStoreContainer" CdmEntityContainer="GammeEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="GammeModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Type_User" ColumnName="Type_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Familles">
+      <EntityTypeMapping TypeName="GammeModel.Famille">
+        <MappingFragment StoreEntitySet="Famille">
+          <ScalarProperty Name="ID_Famille" ColumnName="ID_Famille" />
+          <ScalarProperty Name="Nom_Famille" ColumnName="Nom_Famille" />
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fonctions">
+      <EntityTypeMapping TypeName="GammeModel.Fonction">
+        <MappingFragment StoreEntitySet="Fonction">
+          <ScalarProperty Name="ID_Fonction" ColumnName="ID_Fonction" />
+          <ScalarProperty Name="ID_Phase" ColumnName="ID_Phase" />
+          <ScalarProperty Name="Nom_Fonction" ColumnName="Nom_Fonction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fonction_Poste">
+      <EntityTypeMapping TypeName="GammeModel.Fonction_Poste">
+        <MappingFragment StoreEntitySet="Fonction_Poste">
+          <ScalarProperty Name="ID_Poste" ColumnName="ID_Poste" />
+          <ScalarProperty Name="ID_Fonction" ColumnName="ID_Fonction" />
+          <ScalarProperty Name="Droit" ColumnName="Droit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gammes">
+      <EntityTypeMapping TypeName="GammeModel.Gamme">
+        <MappingFragment StoreEntitySet="Gamme">
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+          <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Nbr_Passage" ColumnName="Nbr_Passage" />
+          <ScalarProperty Name="Last_Posts" ColumnName="Last_Posts" />
+          <ScalarProperty Name="Next_Posts" ColumnName="Next_Posts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historiques">
+      <EntityTypeMapping TypeName="GammeModel.Historique">
+        <MappingFragment StoreEntitySet="Historique">
+          <ScalarProperty Name="Num_Serie" ColumnName="Num_Serie" />
+          <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ns_AFaire">
+      <EntityTypeMapping TypeName="GammeModel.Ns_AFaire">
+        <MappingFragment StoreEntitySet="Ns_AFaire">
+          <ScalarProperty Name="Num_Serie" ColumnName="Num_Serie" />
+          <ScalarProperty Name="Code_Produit" ColumnName="Code_Produit" />
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Num_Serie">
+      <EntityTypeMapping TypeName="GammeModel.Num_Serie">
+        <MappingFragment StoreEntitySet="Num_Serie">
+          <ScalarProperty Name="Num_Serie1" ColumnName="Num_Serie" />
+          <ScalarProperty Name="Code_Produit" ColumnName="Code_Produit" />
+          <ScalarProperty Name="Sous_Famille" ColumnName="Sous_Famille" />
+          <ScalarProperty Name="Last_Post" ColumnName="Last_Post" />
+          <ScalarProperty Name="Last_Mvt" ColumnName="Last_Mvt" />
+          <ScalarProperty Name="Last_Gamme" ColumnName="Last_Gamme" />
+          <ScalarProperty Name="Current_Game" ColumnName="Current_Game" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phases">
+      <EntityTypeMapping TypeName="GammeModel.Phase">
+        <MappingFragment StoreEntitySet="Phase">
+          <ScalarProperty Name="ID_Phase" ColumnName="ID_Phase" />
+          <ScalarProperty Name="Nom_Phase" ColumnName="Nom_Phase" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Postes">
+      <EntityTypeMapping TypeName="GammeModel.Poste">
+        <MappingFragment StoreEntitySet="Poste">
+          <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+          <ScalarProperty Name="nom_Post" ColumnName="nom_Post" />
+          <ScalarProperty Name="Application" ColumnName="Application" />
+          <ScalarProperty Name="In_Po" ColumnName="In_Po" />
+          <ScalarProperty Name="Out_Po" ColumnName="Out_Po" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produits">
+      <EntityTypeMapping TypeName="GammeModel.Produit">
+        <MappingFragment StoreEntitySet="Produit">
+          <ScalarProperty Name="Code_Produit" ColumnName="Code_Produit" />
+          <ScalarProperty Name="Nom_Produit" ColumnName="Nom_Produit" />
+          <ScalarProperty Name="ID_SFamille" ColumnName="ID_SFamille" />
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profile_Ga">
+      <EntityTypeMapping TypeName="GammeModel.Profile_Ga">
+        <MappingFragment StoreEntitySet="Profile_Ga">
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+          <ScalarProperty Name="In_Ga" ColumnName="In_Ga" />
+          <ScalarProperty Name="Out_Ga" ColumnName="Out_Ga" />
+          <ScalarProperty Name="Next_Gamme" ColumnName="Next_Gamme" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sous_Famille">
+      <EntityTypeMapping TypeName="GammeModel.Sous_Famille">
+        <MappingFragment StoreEntitySet="Sous_Famille">
+          <ScalarProperty Name="ID_SFamaille" ColumnName="ID_SFamaille" />
+          <ScalarProperty Name="Nom_SFamille" ColumnName="Nom_SFamille" />
+          <ScalarProperty Name="ID_Famille" ColumnName="ID_Famille" />
+          <ScalarProperty Name="ID_Gamme" ColumnName="ID_Gamme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GammeModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="GammeModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+          <ScalarProperty Name="Nom_User" ColumnName="Nom_User" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Type_User" ColumnName="Type_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

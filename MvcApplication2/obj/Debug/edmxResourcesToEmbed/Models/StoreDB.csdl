@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GammeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="GammeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="GammeModel.Account" />
+    <EntitySet Name="Familles" EntityType="GammeModel.Famille" />
+    <EntitySet Name="Fonctions" EntityType="GammeModel.Fonction" />
+    <EntitySet Name="Fonction_Poste" EntityType="GammeModel.Fonction_Poste" />
+    <EntitySet Name="Gammes" EntityType="GammeModel.Gamme" />
+    <EntitySet Name="Historiques" EntityType="GammeModel.Historique" />
+    <EntitySet Name="Ns_AFaire" EntityType="GammeModel.Ns_AFaire" />
+    <EntitySet Name="Num_Serie" EntityType="GammeModel.Num_Serie" />
+    <EntitySet Name="Phases" EntityType="GammeModel.Phase" />
+    <EntitySet Name="Postes" EntityType="GammeModel.Poste" />
+    <EntitySet Name="Produits" EntityType="GammeModel.Produit" />
+    <EntitySet Name="Profile_Ga" EntityType="GammeModel.Profile_Ga" />
+    <EntitySet Name="Sous_Famille" EntityType="GammeModel.Sous_Famille" />
+    <EntitySet Name="sysdiagrams" EntityType="GammeModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="GammeModel.User" />
+    <AssociationSet Name="FK_Users_Account" Association="GammeModel.FK_Users_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Famille_Profile_Ga" Association="GammeModel.FK_Famille_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Famille" EntitySet="Familles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sous_Famille_Famille" Association="GammeModel.FK_Sous_Famille_Famille">
+      <End Role="Famille" EntitySet="Familles" />
+      <End Role="Sous_Famille" EntitySet="Sous_Famille" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fonction_Phase" Association="GammeModel.FK_Fonction_Phase">
+      <End Role="Phase" EntitySet="Phases" />
+      <End Role="Fonction" EntitySet="Fonctions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fonction_Poste_Fonction" Association="GammeModel.FK_Fonction_Poste_Fonction">
+      <End Role="Fonction" EntitySet="Fonctions" />
+      <End Role="Fonction_Poste" EntitySet="Fonction_Poste" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fonction_Poste_Poste" Association="GammeModel.FK_Fonction_Poste_Poste">
+      <End Role="Poste" EntitySet="Postes" />
+      <End Role="Fonction_Poste" EntitySet="Fonction_Poste" />
+    </AssociationSet>
+    <AssociationSet Name="Gamme_Poste" Association="GammeModel.Gamme_Poste">
+      <End Role="Poste" EntitySet="Postes" />
+      <End Role="Gamme" EntitySet="Gammes" />
+    </AssociationSet>
+    <AssociationSet Name="Gamme_Profile_Ga" Association="GammeModel.Gamme_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Gamme" EntitySet="Gammes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historique_Num_Serie" Association="GammeModel.FK_Historique_Num_Serie">
+      <End Role="Num_Serie" EntitySet="Num_Serie" />
+      <End Role="Historique" EntitySet="Historiques" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historique_Poste" Association="GammeModel.FK_Historique_Poste">
+      <End Role="Poste" EntitySet="Postes" />
+      <End Role="Historique" EntitySet="Historiques" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ns_AFaire_Produit" Association="GammeModel.FK_Ns_AFaire_Produit">
+      <End Role="Produit" EntitySet="Produits" />
+      <End Role="Ns_AFaire" EntitySet="Ns_AFaire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ns_AFaire_Profile_Ga" Association="GammeModel.FK_Ns_AFaire_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Ns_AFaire" EntitySet="Ns_AFaire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produit_Profile_Ga" Association="GammeModel.FK_Produit_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Produit" EntitySet="Produits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produit_Sous_Famille" Association="GammeModel.FK_Produit_Sous_Famille">
+      <End Role="Sous_Famille" EntitySet="Sous_Famille" />
+      <End Role="Produit" EntitySet="Produits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sous_Famille_Profile_Ga" Association="GammeModel.FK_Sous_Famille_Profile_Ga">
+      <End Role="Profile_Ga" EntitySet="Profile_Ga" />
+      <End Role="Sous_Famille" EntitySet="Sous_Famille" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Type_User" />
+    </Key>
+    <Property Name="Type_User" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="GammeModel.FK_Users_Account" FromRole="Account" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Famille">
+    <Key>
+      <PropertyRef Name="ID_Famille" />
+    </Key>
+    <Property Name="ID_Famille" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Nom_Famille" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Gamme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Profile_Ga" Relationship="GammeModel.FK_Famille_Profile_Ga" FromRole="Famille" ToRole="Profile_Ga" />
+    <NavigationProperty Name="Sous_Famille" Relationship="GammeModel.FK_Sous_Famille_Famille" FromRole="Famille" ToRole="Sous_Famille" />
+  </EntityType>
+  <EntityType Name="Fonction">
+    <Key>
+      <PropertyRef Name="ID_Fonction" />
+    </Key>
+    <Property Name="ID_Fonction" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Phase" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Nom_Fonction" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Phase" Relationship="GammeModel.FK_Fonction_Phase" FromRole="Fonction" ToRole="Phase" />
+    <NavigationProperty Name="Fonction_Poste" Relationship="GammeModel.FK_Fonction_Poste_Fonction" FromRole="Fonction" ToRole="Fonction_Poste" />
+  </EntityType>
+  <EntityType Name="Fonction_Poste">
+    <Key>
+      <PropertyRef Name="ID_Poste" />
+      <PropertyRef Name="ID_Fonction" />
+      <PropertyRef Name="Droit" />
+    </Key>
+    <Property Name="ID_Poste" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Fonction" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Droit" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Fonction" Relationship="GammeModel.FK_Fonction_Poste_Fonction" FromRole="Fonction_Poste" ToRole="Fonction" />
+    <NavigationProperty Name="Poste" Relationship="GammeModel.FK_Fonction_Poste_Poste" FromRole="Fonction_Poste" ToRole="Poste" />
+  </EntityType>
+  <EntityType Name="Gamme">
+    <Key>
+      <PropertyRef Name="ID_Gamme" />
+      <PropertyRef Name="ID_Post" />
+      <PropertyRef Name="Position" />
+      <PropertyRef Name="Nbr_Passage" />
+      <PropertyRef Name="Last_Posts" />
+      <PropertyRef Name="Next_Posts" />
+    </Key>
+    <Property Name="ID_Gamme" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Post" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <Property Name="Nbr_Passage" Type="Int32" Nullable="false" />
+    <Property Name="Last_Posts" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Next_Posts" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Poste" Relationship="GammeModel.Gamme_Poste" FromRole="Gamme" ToRole="Poste" />
+    <NavigationProperty Name="Profile_Ga" Relationship="GammeModel.Gamme_Profile_Ga" FromRole="Gamme" ToRole="Profile_Ga" />
+  </EntityType>
+  <EntityType Name="Historique">
+    <Key>
+      <PropertyRef Name="Num_Serie" />
+      <PropertyRef Name="ID_Post" />
+    </Key>
+    <Property Name="Num_Serie" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Post" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Gamme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Num_Serie1" Relationship="GammeModel.FK_Historique_Num_Serie" FromRole="Historique" ToRole="Num_Serie" />
+    <NavigationProperty Name="Poste" Relationship="GammeModel.FK_Historique_Poste" FromRole="Historique" ToRole="Poste" />
+  </EntityType>
+  <EntityType Name="Ns_AFaire">
+    <Key>
+      <PropertyRef Name="Num_Serie" />
+    </Key>
+    <Property Name="Num_Serie" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Code_Produit" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Gamme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Produit" Relationship="GammeModel.FK_Ns_AFaire_Produit" FromRole="Ns_AFaire" ToRole="Produit" />
+    <NavigationProperty Name="Profile_Ga" Relationship="GammeModel.FK_Ns_AFaire_Profile_Ga" FromRole="Ns_AFaire" ToRole="Profile_Ga" />
+  </EntityType>
+  <EntityType Name="Num_Serie">
+    <Key>
+      <PropertyRef Name="Num_Serie1" />
+    </Key>
+    <Property Name="Num_Serie1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Code_Produit" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Sous_Famille" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Last_Post" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Last_Mvt" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Last_Gamme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Current_Game" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Historiques" Relationship="GammeModel.FK_Historique_Num_Serie" FromRole="Num_Serie" ToRole="Historique" />
+  </EntityType>
+  <EntityType Name="Phase">
+    <Key>
+      <PropertyRef Name="ID_Phase" />
+    </Key>
+    <Property Name="ID_Phase" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Nom_Phase" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Fonctions" Relationship="GammeModel.FK_Fonction_Phase" FromRole="Phase" ToRole="Fonction" />
+  </EntityType>
+  <EntityType Name="Poste">
+    <Key>
+      <PropertyRef Name="ID_Post" />
+    </Key>
+    <Property Name="ID_Post" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="nom_Post" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Application" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="In_Po" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Out_Po" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Etat" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Fonction_Poste" Relationship="GammeModel.FK_Fonction_Poste_Poste" FromRole="Poste" ToRole="Fonction_Poste" />
+    <NavigationProperty Name="Gammes" Relationship="GammeModel.Gamme_Poste" FromRole="Poste" ToRole="Gamme" />
+    <NavigationProperty Name="Historiques" Relationship="GammeModel.FK_Historique_Poste" FromRole="Poste" ToRole="Historique" />
+  </EntityType>
+  <EntityType Name="Produit">
+    <Key>
+      <PropertyRef Name="Code_Produit" />
+    </Key>
+    <Property Name="Code_Produit" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Nom_Produit" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_SFamille" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Gamme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Ns_AFaire" Relationship="GammeModel.FK_Ns_AFaire_Produit" FromRole="Produit" ToRole="Ns_AFaire" />
+    <NavigationProperty Name="Profile_Ga" Relationship="GammeModel.FK_Produit_Profile_Ga" FromRole="Produit" ToRole="Profile_Ga" />
+    <NavigationProperty Name="Sous_Famille" Relationship="GammeModel.FK_Produit_Sous_Famille" FromRole="Produit" ToRole="Sous_Famille" />
+  </EntityType>
+  <EntityType Name="Profile_Ga">
+    <Key>
+      <PropertyRef Name="ID_Gamme" />
+    </Key>
+    <Property Name="ID_Gamme" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="In_Ga" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Out_Ga" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Next_Gamme" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Etat" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Familles" Relationship="GammeModel.FK_Famille_Profile_Ga" FromRole="Profile_Ga" ToRole="Famille" />
+    <NavigationProperty Name="Gammes" Relationship="GammeModel.Gamme_Profile_Ga" FromRole="Profile_Ga" ToRole="Gamme" />
+    <NavigationProperty Name="Ns_AFaire" Relationship="GammeModel.FK_Ns_AFaire_Profile_Ga" FromRole="Profile_Ga" ToRole="Ns_AFaire" />
+    <NavigationProperty Name="Produits" Relationship="GammeModel.FK_Produit_Profile_Ga" FromRole="Profile_Ga" ToRole="Produit" />
+    <NavigationProperty Name="Sous_Famille" Relationship="GammeModel.FK_Sous_Famille_Profile_Ga" FromRole="Profile_Ga" ToRole="Sous_Famille" />
+  </EntityType>
+  <EntityType Name="Sous_Famille">
+    <Key>
+      <PropertyRef Name="ID_SFamaille" />
+    </Key>
+    <Property Name="ID_SFamaille" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Nom_SFamille" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Famille" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ID_Gamme" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Famille" Relationship="GammeModel.FK_Sous_Famille_Famille" FromRole="Sous_Famille" ToRole="Famille" />
+    <NavigationProperty Name="Produits" Relationship="GammeModel.FK_Produit_Sous_Famille" FromRole="Sous_Famille" ToRole="Produit" />
+    <NavigationProperty Name="Profile_Ga" Relationship="GammeModel.FK_Sous_Famille_Profile_Ga" FromRole="Sous_Famille" ToRole="Profile_Ga" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="principal_id" Nullable="false" Type="Int32" />
+    <Property Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" MaxLength="Max" FixedLength="false" Type="Binary" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Matricule" />
+    </Key>
+    <Property Name="Matricule" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Nom_User" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Type_User" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Account" Relationship="GammeModel.FK_Users_Account" FromRole="Users" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK_Users_Account">
+    <End Role="Account" Type="GammeModel.Account" Multiplicity="1" />
+    <End Role="Users" Type="GammeModel.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Type_User" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Type_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Famille_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Famille" Type="GammeModel.Famille" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Famille">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sous_Famille_Famille">
+    <End Role="Famille" Type="GammeModel.Famille" Multiplicity="1" />
+    <End Role="Sous_Famille" Type="GammeModel.Sous_Famille" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Famille">
+        <PropertyRef Name="ID_Famille" />
+      </Principal>
+      <Dependent Role="Sous_Famille">
+        <PropertyRef Name="ID_Famille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fonction_Phase">
+    <End Role="Phase" Type="GammeModel.Phase" Multiplicity="1" />
+    <End Role="Fonction" Type="GammeModel.Fonction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phase">
+        <PropertyRef Name="ID_Phase" />
+      </Principal>
+      <Dependent Role="Fonction">
+        <PropertyRef Name="ID_Phase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fonction_Poste_Fonction">
+    <End Role="Fonction" Type="GammeModel.Fonction" Multiplicity="1" />
+    <End Role="Fonction_Poste" Type="GammeModel.Fonction_Poste" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonction">
+        <PropertyRef Name="ID_Fonction" />
+      </Principal>
+      <Dependent Role="Fonction_Poste">
+        <PropertyRef Name="ID_Fonction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fonction_Poste_Poste">
+    <End Role="Poste" Type="GammeModel.Poste" Multiplicity="1" />
+    <End Role="Fonction_Poste" Type="GammeModel.Fonction_Poste" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poste">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Fonction_Poste">
+        <PropertyRef Name="ID_Poste" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gamme_Poste">
+    <End Role="Poste" Type="GammeModel.Poste" Multiplicity="1" />
+    <End Role="Gamme" Type="GammeModel.Gamme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poste">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Gamme">
+        <PropertyRef Name="ID_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gamme_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Profile_Ga" Multiplicity="1" />
+    <End Role="Gamme" Type="GammeModel.Gamme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Gamme">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historique_Num_Serie">
+    <End Role="Num_Serie" Type="GammeModel.Num_Serie" Multiplicity="1" />
+    <End Role="Historique" Type="GammeModel.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Num_Serie">
+        <PropertyRef Name="Num_Serie1" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="Num_Serie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historique_Poste">
+    <End Role="Poste" Type="GammeModel.Poste" Multiplicity="1" />
+    <End Role="Historique" Type="GammeModel.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Poste">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="ID_Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ns_AFaire_Produit">
+    <End Role="Produit" Type="GammeModel.Produit" Multiplicity="1" />
+    <End Role="Ns_AFaire" Type="GammeModel.Ns_AFaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produit">
+        <PropertyRef Name="Code_Produit" />
+      </Principal>
+      <Dependent Role="Ns_AFaire">
+        <PropertyRef Name="Code_Produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ns_AFaire_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Ns_AFaire" Type="GammeModel.Ns_AFaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Ns_AFaire">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produit_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Produit" Type="GammeModel.Produit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Produit">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produit_Sous_Famille">
+    <End Role="Sous_Famille" Type="GammeModel.Sous_Famille" Multiplicity="1" />
+    <End Role="Produit" Type="GammeModel.Produit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sous_Famille">
+        <PropertyRef Name="ID_SFamaille" />
+      </Principal>
+      <Dependent Role="Produit">
+        <PropertyRef Name="ID_SFamille" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sous_Famille_Profile_Ga">
+    <End Role="Profile_Ga" Type="GammeModel.Profile_Ga" Multiplicity="0..1" />
+    <End Role="Sous_Famille" Type="GammeModel.Sous_Famille" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile_Ga">
+        <PropertyRef Name="ID_Gamme" />
+      </Principal>
+      <Dependent Role="Sous_Famille">
+        <PropertyRef Name="ID_Gamme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
