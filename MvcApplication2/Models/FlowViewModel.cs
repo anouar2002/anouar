@@ -12,7 +12,6 @@ namespace MvcApplication2.Models
 {
     public class FlowViewModel
     {
-
         [Key]
         public string IDv { get; set; }
         [NotMapped]
@@ -25,28 +24,14 @@ namespace MvcApplication2.Models
         public List<Ns_AFaire> NSItems { get; set; }
         public List<Genre> GenreItems { get; set; }
         public List<Fonction> FoncItems { get; set; }
-
-    
-
         public string SelectedProfile_Ga { get; set; }
-
-        
-      public string SelectedPoste { get; set; }
-      public string SelectedFonction { get; set; }
-
-      public string PostePrecedentSelected { get; set; } 
-      public string PosteSuivantSelected { get; set; }
-
-       
+        public string SelectedPoste { get; set; }
+        public string SelectedFonction { get; set; }
+        public string PostePrecedentSelected { get; set; }
+        public string PosteSuivantSelected { get; set; }
         public string Position { get; set; }
         public string  Nbr_Passage { get; set; }
-
-        public string SelectedGenre { get; set; } 
-
-        public List<Gamme> ListG {get;set;}
-
-
-        
+        public string SelectedGenre { get; set; }
+        public List<Gamme> ListG {get;set;}        
     }
-
 }
