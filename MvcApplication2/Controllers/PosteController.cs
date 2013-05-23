@@ -46,16 +46,24 @@ namespace MvcApplication2.Controllers
         [HttpPost]
         public ActionResult Create(Poste poste)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Postes.Add(poste);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+                if (ModelState.IsValid)
+                {
+                    db.Postes.Add(poste);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.InnerException.InnerException);
+                
+            }
             ViewBag.ID_Ligne = new SelectList(db.Lignes, "ID_Ligne", "ID_UF", poste.ID_Ligne);
             return View(poste);
         }
+
         
         //
         // GET: /Poste/Edit/5

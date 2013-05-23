@@ -158,8 +158,8 @@ form input[type=text], form input[type=password], form textarea
 
 form textarea
 {
-    width: 40em;
-    height:8.1em;
+    width: 10em;
+    height:5.1em;
 }
 
 form input[type=text], form input[type=password]

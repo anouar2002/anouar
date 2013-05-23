@@ -106,6 +106,7 @@
     <Compile Include="AppStart_RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\MvcProjectAwesome.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FonctionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PosteController.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Models\Profile_Ga.cs" />
     <Compile Include="Models\Sous_Famille.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\UF.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -222,6 +224,13 @@
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\Site.js" />
+    <Content Include="Views\Fonction\Create.aspx" />
+    <Content Include="Views\Fonction\Delete.aspx" />
+    <Content Include="Views\Fonction\Details.aspx" />
+    <Content Include="Views\Fonction\Edit.aspx" />
+    <Content Include="Views\Fonction\Gerer.aspx" />
+    <Content Include="Views\Fonction\Index.aspx" />
+    <Content Include="Views\ProfileGa\Application.aspx" />
     <Content Include="Views\ProfileGa\Update.aspx" />
     <Content Include="Views\Shared\Gestion.ascx" />
     <Content Include="Views\Account\LogedInUser.ascx" />
@@ -332,7 +341,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4144</DevelopmentServerPort>
+          <DevelopmentServerPort>1633</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

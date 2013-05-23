@@ -63,32 +63,25 @@
 <% } %>
 
 </table>
+<br />
+<br />
 <% using (Html.BeginForm("Save", "ProfileGa"))
    { %>
-  <div><%:Html.Label("Gamme :")%><%: Html.DropDownListFor(model => model.SelectedProfile_Ga, new SelectList(Model.Profile_GaItems, "ID_Gamme", "ID_Gamme"))%> <input type="button" value="Configurer" id="btnShowGestion" /></div> 
    
-
-
+  <div><%:Html.Label("Gamme :")%><%: Html.DropDownListFor(model => model.SelectedProfile_Ga, new SelectList(Model.Profile_GaItems, "ID_Gamme", "ID_Gamme"), new { @id = "gg" })%> 
+  <input type="button" value="Configurer" id="btnShowGestion" onclick="GamDis()"/>
+  <input type="button" value="Appliquer" id="appliquer" onclick="window.location = 'ProfileGa/Application'"/>
+  </div> 
         
-<div id="divGestion"><%: Html.Partial("Gestion", Model) %></div>
-       <% } %>   
-        <script type="text/javascript">
+   <div id="divGestion">
+   <%: Html.Partial("Gestion", Model) %>
+   </div>
 
-            $(document).ready(function () {
-
-
-
-
-
-                $('#btnShowGestion').click(function () { $('#divGestion').slideToggle("slow") });
-              
-               
-
-            });
-
-</script>
+       <% } %> 
+    
+<form id="form1" runat="server">
 <fieldset>
-<legend>Gestion des Gammes</legend>
+<legend>Liste des Gammes</legend>
 <table>
     <tr>
         <th>
@@ -112,7 +105,7 @@
         <th>Opérations</th>
     </tr>
 
-<% foreach (var item in Model.GaItems) { %>
+<% foreach (var item in Model.ListG = ((List<Gamme>) Session["GammeList"])) { %>
     <tr>
          <td>
             <%: Html.DisplayFor(modelItem => item.ID_Gamme) %>
@@ -144,7 +137,43 @@
 <% } %>
 
 </table>
- </fieldset>     
+
+ </fieldset>
+ </form>
+ <input type="button" value = "Valider" /> 
+ <script type="text/javascript">
+
+     $(document).ready(function () {
+
+
+
+
+
+         $('#btnShowGestion').click(function () { $('#divGestion').slideToggle("slow") });
+
+
+
+     });
+
+</script>
+ <script type="text/javascript">
+
+     function GamDis() {
+
+         var gg = document.getElementById('gg');
+         var bb = document.getElementById('btnShowGestion');
+
+
+         if (gg.disabled) {
+             gg.removeAttribute("disabled");
+         } else {
+             gg.disabled = 'disabled';
+         }
+     
+     }
+   
+    </script>   
+    
 </asp:Content>
 
 

@@ -13,15 +13,21 @@ namespace MvcApplication2.Controllers
     public class ProfileGaController : Controller
     {
         private GammeContext db = new GammeContext();
-        public List<Gamme> ListG = new List<Gamme>();
+        
 
         //
         // GET: /ProfileGa/
 
+        public ProfileGaController()
+        {
+            if (System.Web.HttpContext.Current.Session["GammeList"] == null)
+                System.Web.HttpContext.Current.Session["GammeList"] = new List<Gamme>();
+        }
+
         public ActionResult Gestion(FlowViewModel model)
         {
 
-           
+            
             return PartialView(model);
 
         }
@@ -133,16 +139,22 @@ namespace MvcApplication2.Controllers
             Console.WriteLine("" + model.Nbr_Passage);
             if (ModelState.IsValid)
             {
+                
                 Gamme G = new Gamme();
                 G.ID_Gamme = model.SelectedProfile_Ga;
                 G.ID_Poste = model.SelectedPoste;
-                G.Last_Posts = model.PostePrecedentSelected;
+                //G.Last_Posts = model.PostePrecedentSelected;
                 G.Next_Posts = model.PosteSuivantSelected;
                 G.Nbr_Passage = int.Parse(model.Nbr_Passage);
                 G.Position = int.Parse(model.Position);
-                ListG.Add(G);
-                db.Gammes.Add(G);
-                db.SaveChanges();
+
+                ((List<Gamme>)System.Web.HttpContext.Current.Session["GammeList"]).Add(G);
+                var list = ((List<Gamme>)System.Web.HttpContext.Current.Session["GammeList"]);
+                
+               // model.ListG.Add(G);
+                //db.Gammes.Add(G);
+                //db.SaveChanges();
+
             }
             return RedirectToAction("Index");
            
@@ -162,7 +174,7 @@ namespace MvcApplication2.Controllers
             Console.WriteLine("" + model.Nbr_Passage);
            
                 Gamme G = new Gamme();
-                ListG.Remove(G);
+               // ListG.Remove(G);
                 db.Gammes.Remove(G); 
                 G.ID_Gamme = model.SelectedProfile_Ga;
                 G.ID_Poste = model.SelectedPoste;
@@ -170,13 +182,38 @@ namespace MvcApplication2.Controllers
                 G.Next_Posts = model.PosteSuivantSelected;
                 G.Nbr_Passage = int.Parse(model.Nbr_Passage);
                 G.Position = int.Parse(model.Position);
-                ListG.Add(G);
+                //ListG.Add(G);
                 db.Gammes.Add(G);
                 db.SaveChanges();
             
             return RedirectToAction("Index");
 
         }
+
+        [HttpGet]
+        public ActionResult Application(Genre genre)
+        {
+            var vv = new FlowViewModel();
+           vv.GenreItems = db.Genres.ToList();
+            
+            if (vv.SelectedGenre == "Famille")
+            {
+
+                vv.FaItems = db.Familles.ToList();
+
+
+            }
+            else if (vv.SelectedGenre == "Sous Famille")
+            {
+                vv.SFItems = db.Sous_Familles.ToList();
+
+            }
+            return View(vv);
+
+        }
+
+        
+
 
 
 

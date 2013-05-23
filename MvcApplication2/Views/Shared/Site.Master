@@ -33,7 +33,8 @@
                     <%= Html.MenuItem("Gestion des Postes", "Index", "Poste")%>
                     <%= Html.MenuItem("Gestion de Flux", "Index", "ProfileGa")%>
                     <%= Html.MenuItem("Gestion des Utilisateurs", "Index", "User")%>
-                     <%= Html.MenuItem("A propos", "About", "Home")%>
+                      <%= Html.MenuItem("Gestion des Fonctions", "Index", "Fonction")%>
+                     <%--<%= Html.MenuItem("A propos", "About", "Home")%>--%>
                       
                 </ul>
             </div>

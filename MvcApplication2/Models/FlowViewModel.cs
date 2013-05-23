@@ -18,7 +18,13 @@ namespace MvcApplication2.Models
         [NotMapped]
         public SelectList PostesItems { get; set; }
         public List<Profile_Ga> Profile_GaItems { get; set; }
-     public List<Gamme> GaItems { get; set; }
+        public List<Gamme> GaItems { get; set; }
+        public List<Famille> FaItems { get; set; }
+        public List<Sous_Famille> SFItems { get; set; }
+        public List<Produit> PItems { get; set; }
+        public List<Ns_AFaire> NSItems { get; set; }
+        public List<Genre> GenreItems { get; set; }
+        public List<Fonction> FoncItems { get; set; }
 
     
 
@@ -26,6 +32,7 @@ namespace MvcApplication2.Models
 
         
       public string SelectedPoste { get; set; }
+      public string SelectedFonction { get; set; }
 
       public string PostePrecedentSelected { get; set; } 
       public string PosteSuivantSelected { get; set; }
@@ -33,12 +40,12 @@ namespace MvcApplication2.Models
        
         public string Position { get; set; }
         public string  Nbr_Passage { get; set; }
-       
-        public List<Gamme> ListG = new List<Gamme>();
 
-    
- 
-  
+        public string SelectedGenre { get; set; } 
+
+        public List<Gamme> ListG {get;set;}
+
+
         
     }
 

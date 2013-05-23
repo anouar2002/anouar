@@ -8,7 +8,8 @@
 
 <h2>Gestion des Postes</h2>
 <br />
-
+<div><%: Html.ActionLink("Ajouter un nouveau Poste", "Create") %></div>
+<br />
 <table>
     <tr>
         <th>
@@ -77,7 +78,8 @@
 </table>
 <br />
 <p>
-    <%: Html.ActionLink("Ajouter un nouveau Poste", "Create") %>
+    
+    <div><input type="button" value="Gérer les droits" id="gerer" onclick="window.location = 'Fonction/gerer'"/></div>
 </p>
 
 </asp:Content>

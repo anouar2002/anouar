@@ -34,6 +34,7 @@ namespace MvcApplication2.Models
         public DbSet<UF> UFs { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Num_Serie> Num_Series { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
