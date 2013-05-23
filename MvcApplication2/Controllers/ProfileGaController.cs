@@ -13,10 +13,6 @@ namespace MvcApplication2.Controllers
     public class ProfileGaController : Controller
     {
         private GammeContext db = new GammeContext();
-        
-
-        //
-        // GET: /ProfileGa/
 
         public ProfileGaController()
         {
@@ -26,30 +22,20 @@ namespace MvcApplication2.Controllers
 
         public ActionResult Gestion(FlowViewModel model)
         {
-
-            
             return PartialView(model);
-
         }
+
         [HttpGet]
-        public ActionResult Index(Profile_Ga profile_ga, Poste poste)
-        {
-             
+        public ActionResult Index()
+        {             
             var viewModel = new FlowViewModel();
-            viewModel.PostesItems = new SelectList(db.Postes.ToList(), "ID_Poste", "ID_Poste");
-            
-               viewModel.Profile_GaItems = db.Profil_Gas.ToList();
-               viewModel.GaItems = db.Gammes.ToList();
+            viewModel.PostesItems = new SelectList(db.Postes.ToList(), "ID_Poste", "ID_Poste");            
+            viewModel.Profile_GaItems = db.Profil_Gas.ToList();
+            viewModel.GaItems = db.Gammes.ToList();
+            viewModel.ListG = (List<Gamme>)System.Web.HttpContext.Current.Session["GammeList"];
                   
             return View(viewModel);
-            
-
-
         }
-
-        
-        //
-        // GET: /ProfileGa/Details/5
 
         public ViewResult Details(string id)
         {
@@ -57,18 +43,11 @@ namespace MvcApplication2.Controllers
             return View(profile_ga);
         }
 
-        //
-        // GET: /ProfileGa/Create
-
         public ActionResult Create()
-        {
-            
+        {            
             return View();
         } 
-
-        //
-        // POST: /ProfileGa/Create
-
+        
         [HttpPost]
         public ActionResult Create(Profile_Ga profile_ga)
         {
@@ -81,18 +60,12 @@ namespace MvcApplication2.Controllers
 
             return View(profile_ga);
         }
-        
-        //
-        // GET: /ProfileGa/Edit/5
  
         public ActionResult Edit(string id)
         {
             Profile_Ga profile_ga = db.Profil_Gas.Find(id);
             return View(profile_ga);
         }
-
-        //
-        // POST: /ProfileGa/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Profile_Ga profile_ga)
@@ -105,18 +78,12 @@ namespace MvcApplication2.Controllers
             }
             return View(profile_ga);
         }
-
-        //
-        // GET: /ProfileGa/Delete/5
  
         public ActionResult Delete(string id)
         {
             Profile_Ga profile_ga = db.Profil_Gas.Find(id);
             return View(profile_ga);
         }
-
-        //
-        // POST: /ProfileGa/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
@@ -138,8 +105,7 @@ namespace MvcApplication2.Controllers
         {
             Console.WriteLine("" + model.Nbr_Passage);
             if (ModelState.IsValid)
-            {
-                
+            {                
                 Gamme G = new Gamme();
                 G.ID_Gamme = model.SelectedProfile_Ga;
                 G.ID_Poste = model.SelectedPoste;
@@ -150,14 +116,8 @@ namespace MvcApplication2.Controllers
 
                 ((List<Gamme>)System.Web.HttpContext.Current.Session["GammeList"]).Add(G);
                 var list = ((List<Gamme>)System.Web.HttpContext.Current.Session["GammeList"]);
-                
-               // model.ListG.Add(G);
-                //db.Gammes.Add(G);
-                //db.SaveChanges();
-
             }
-            return RedirectToAction("Index");
-           
+            return RedirectToAction("Index");           
         }
 
         public ActionResult Update(string id)
@@ -194,8 +154,8 @@ namespace MvcApplication2.Controllers
         public ActionResult Application(Genre genre)
         {
             var vv = new FlowViewModel();
-           vv.GenreItems = db.Genres.ToList();
-            
+            vv.GenreItems = db.Genres.ToList();
+
             if (vv.SelectedGenre == "Famille")
             {
 
@@ -209,14 +169,6 @@ namespace MvcApplication2.Controllers
 
             }
             return View(vv);
-
         }
-
-        
-
-
-
-
-        
     }
 }

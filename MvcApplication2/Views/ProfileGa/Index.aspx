@@ -8,9 +8,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Gestion de flux de production</h2>
-
-
-
 <p>
     <%: Html.ActionLink("Ajouter une nouvelle gamme", "Create") %>
 </p>
@@ -57,9 +54,7 @@
             <%: Html.ActionLink("Détails", "Details", new { id=item.ID_Gamme }) %> |
             <%: Html.ActionLink("Supprimer", "Delete", new { id=item.ID_Gamme }) %>
         </td>
-    </tr>
-    
-     
+    </tr>  
 <% } %>
 
 </table>
@@ -105,7 +100,7 @@
         <th>Opérations</th>
     </tr>
 
-<% foreach (var item in Model.ListG = ((List<Gamme>) Session["GammeList"])) { %>
+<% foreach (var item in Model.ListG) { %>
     <tr>
          <td>
             <%: Html.DisplayFor(modelItem => item.ID_Gamme) %>
@@ -142,38 +137,25 @@
  </form>
  <input type="button" value = "Valider" /> 
  <script type="text/javascript">
-
      $(document).ready(function () {
-
-
-
-
-
          $('#btnShowGestion').click(function () { $('#divGestion').slideToggle("slow") });
-
-
-
      });
 
 </script>
  <script type="text/javascript">
 
      function GamDis() {
-
          var gg = document.getElementById('gg');
          var bb = document.getElementById('btnShowGestion');
-
 
          if (gg.disabled) {
              gg.removeAttribute("disabled");
          } else {
              gg.disabled = 'disabled';
-         }
-     
+         }     
      }
    
-    </script>   
-    
+    </script>       
 </asp:Content>
 
 
